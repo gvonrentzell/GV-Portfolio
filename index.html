@@ -1,0 +1,84 @@
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import DesignPortfolio from "./pages/DesignPortfolio";
+import EducatorPortfolio from "./pages/EducatorPortfolio";
+import Contact from "./pages/Contact";
+
+function App() {
+  return (
+    <Router>
+      <div className="bg-purple-100 min-h-screen text-gray-900">
+        <Navbar />
+        <div className="p-6">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/design" element={<DesignPortfolio />} />
+            <Route path="/educator" element={<EducatorPortfolio />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+// components/Navbar.js
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaHome, FaUser, FaPalette, FaChalkboardTeacher, FaEnvelope } from "react-icons/fa";
+
+const Navbar = () => {
+  return (
+    <nav className="bg-purple-700 text-white flex justify-between items-center px-6 py-4 shadow-md">
+      <div className="text-2xl font-bold">Geoffrey von Rentzell</div>
+      <div className="flex gap-6 text-lg">
+        <Link to="/" className="hover:scale-110 transition-transform flex items-center gap-1">
+          <FaHome /> Home
+        </Link>
+        <Link to="/about" className="hover:scale-110 transition-transform flex items-center gap-1">
+          <FaUser /> About
+        </Link>
+        <Link to="/design" className="hover:scale-110 transition-transform flex items-center gap-1">
+          <FaPalette /> Design
+        </Link>
+        <Link to="/educator" className="hover:scale-110 transition-transform flex items-center gap-1">
+          <FaChalkboardTeacher /> Educator
+        </Link>
+        <Link to="/contact" className="hover:scale-110 transition-transform flex items-center gap-1">
+          <FaEnvelope /> Contact
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+// Example page template: pages/Home.js
+import React from "react";
+
+const Home = () => {
+  return (
+    <div className="text-center text-purple-900">
+      <h1 className="text-4xl font-bold mb-4 hover:scale-110 transition-transform">Welcome to My Portfolio</h1>
+      <p className="text-lg max-w-2xl mx-auto hover:scale-105 transition-transform">
+        Explore my work as a designer and educator. Dive into projects that merge creativity and learning.
+      </p>
+    </div>
+  );
+};
+
+export default Home;
+
+// Create similar components for About.js, DesignPortfolio.js, EducatorPortfolio.js, and Contact.js.
+// You can copy Home.js and change the content accordingly.
+
+// Tailwind CSS setup in index.css should include base config for colors and animations if needed.
+// Make sure to run `npm install react-router-dom react-icons tailwindcss` and configure Tailwind in your project.
